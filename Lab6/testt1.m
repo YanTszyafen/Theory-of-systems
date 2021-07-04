@@ -1,0 +1,16 @@
+V=0:1:1000;
+u1=T1(27);
+u2=T2(27);
+u3=T3(27);
+uv1=u1*v1(V);
+uv2=u2*v2(V);
+uv3=u3*v3(V);
+mf=max(uv1,max(uv2,uv3));
+figure('Tag','defuzz');
+plot(V,mf,'LineWidth',3);
+h_gca=gca;
+h_gca.YTick = [0 .25 .5 .7];
+ylim([-0.15 0.8]);
+xCoA=defuzz(V,mf,'centroid');
+hCoA=line([xCoA xCoA],[0.2 1.2],'Color','k');
+tCoA=text(xCoA,0.15,'centroid','FontWeight','bold');
